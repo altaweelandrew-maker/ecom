@@ -4,16 +4,21 @@ A static ecommerce demo built with HTML, CSS, and JavaScript. It is compatible w
 
 ## Run locally
 
-Open `index.html` in a browser, or serve the folder with any static server.
+Run the Netlify build and serve the generated `dist` folder:
+
+```sh
+npm run build
+npx serve dist
+```
 
 ## Deploy to Netlify
 
 1. Create a new Netlify site.
 2. Connect this folder or upload it as a deploy.
-3. Leave the build command empty.
-4. Set the publish directory to `.`.
+3. Build command: `npm run build`.
+4. Publish directory: `dist`.
 
-The included `netlify.toml` already sets the publish directory and SPA fallback.
+The included `netlify.toml` sets the build command, publish directory, and SPA fallback.
 
 ## Demo promo code
 
