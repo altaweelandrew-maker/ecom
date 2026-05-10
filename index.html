@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A Netlify-ready ecommerce storefront built with HTML, CSS, and JavaScript.">
+    <title>Northline Market</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="#home" aria-label="Northline Market home">
+        <span class="brand-mark">N</span>
+        <span>Northline Market</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="#products">Shop</a>
+        <a href="#featured">Featured</a>
+        <a href="#checkout">Checkout</a>
+      </nav>
+
+      <button class="cart-toggle" type="button" aria-controls="cartDrawer" aria-expanded="false">
+        Cart
+        <span id="cartCount" class="cart-count">0</span>
+      </button>
+    </header>
+
+    <main id="home">
+      <section class="shop-hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Everyday goods, better chosen</p>
+          <h1 id="heroTitle">Northline Market</h1>
+          <p>
+            Curated home, travel, and desk essentials with a fast static checkout flow built for Netlify hosting.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#products">Shop Collection</a>
+            <a class="secondary-link" href="#featured">View Picks</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="Product tools">
+        <label class="search-field">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Search products" autocomplete="off">
+        </label>
+
+        <div class="filter-group" role="group" aria-label="Filter by category">
+          <button class="filter-button is-active" type="button" data-category="all">All</button>
+          <button class="filter-button" type="button" data-category="Home">Home</button>
+          <button class="filter-button" type="button" data-category="Travel">Travel</button>
+          <button class="filter-button" type="button" data-category="Desk">Desk</button>
+        </div>
+
+        <label class="sort-field">
+          <span>Sort</span>
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </label>
+      </section>
+
+      <section id="products" class="product-section" aria-labelledby="productsTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Catalog</p>
+          <h2 id="productsTitle">Shop Products</h2>
+        </div>
+        <div id="productGrid" class="product-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="featured" class="feature-band" aria-labelledby="featureTitle">
+        <div>
+          <p class="eyebrow">Featured bundle</p>
+          <h2 id="featureTitle">Workday Reset Kit</h2>
+          <p>Pair the task lamp, ceramic tumbler, and wool desk mat for a cleaner daily setup.</p>
+        </div>
+        <button class="primary-button" type="button" data-bundle>Add Bundle to Cart</button>
+      </section>
+
+      <section id="checkout" class="checkout-section" aria-labelledby="checkoutTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Secure form mockup</p>
+          <h2 id="checkoutTitle">Checkout</h2>
+        </div>
+        <form id="checkoutForm" class="checkout-form" name="checkout" method="POST" action="/success.html" data-netlify="true">
+          <input type="hidden" name="form-name" value="checkout">
+          <input id="cartSummary" type="hidden" name="cart_summary" value="">
+          <label>
+            Full name
+            <input name="name" type="text" required autocomplete="name">
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" required autocomplete="email">
+          </label>
+          <label>
+            Shipping address
+            <textarea name="address" rows="3" required autocomplete="street-address"></textarea>
+          </label>
+          <button class="primary-button" type="submit">Place Order</button>
+          <p id="orderMessage" class="form-message" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <aside id="cartDrawer" class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+      <div class="cart-panel">
+        <div class="cart-header">
+          <h2>Your Cart</h2>
+          <button class="icon-button" type="button" data-close-cart aria-label="Close cart">x</button>
+        </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="promo-row">
+          <input id="promoInput" type="text" placeholder="Promo code">
+          <button id="promoButton" type="button">Apply</button>
+        </div>
+        <div class="cart-totals">
+          <div><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+          <div><span>Discount</span><strong id="discount">-$0.00</strong></div>
+          <div><span>Tax</span><strong id="tax">$0.00</strong></div>
+          <div class="total-line"><span>Total</span><strong id="total">$0.00</strong></div>
+        </div>
+        <a class="primary-link checkout-link" href="#checkout" data-close-cart>Checkout</a>
+      </div>
+    </aside>
+
+    <footer class="site-footer">
+      <span>Northline Market</span>
+      <span>Static ecommerce demo for Netlify</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
